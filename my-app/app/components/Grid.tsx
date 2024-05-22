@@ -7,13 +7,18 @@ function Grid() {
   return (
     <section id='about' className='relative'>
         <BentoGrid className='w-full py-20'>
-            {gridItems.map((item)=>(
+            {gridItems.map(({
+              id, title,description, className, img, imgClassName, titleClassName, spareImg
+            })=>(
                 <BentoGridItem 
-                id={item.id}
-                key={item.id}
-                title={item.title}
-                description={item.description}
-                className={item.className}
+                id={id}
+                key={id}
+                title={title}
+                description={description}
+                className={className}
+                img={img}
+                titleClassName={titleClassName}
+                spareImg={spareImg}
                 />
             ))
             }
