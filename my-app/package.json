@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-three/drei": "^9.105.6",
+    "@sentry/nextjs": "^8.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.5",
     "mini-svg-data-uri": "^1.4.4",
