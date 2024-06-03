@@ -90,6 +90,14 @@ const RecentProjects = () => {
           </div>
         ))}
       </div>
+
+      <div className="w-full justify-end flex text-purple pe-5 underline ">
+        <div>
+           <a className="text-purple cursor-pointer" href="https://github.com/shruti0503">More</a>
+
+        </div>
+        
+      </div>
     </div>
   );
 };
