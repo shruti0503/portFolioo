@@ -81,7 +81,7 @@ export const projects = [
   {
     id: 2,
     title: "Croom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
+    des: "Simplify your video conferencing experience with Croom. Seamlessly connect with colleagues and friends.",
     img: "/p2.svg",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
     GitHubLink:"https://github.com/shruti0503/Croom",
