@@ -1,7 +1,7 @@
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
+  // { name: "Testimonials", link: "#testimonials" },
   { name: "Contact", link: "#contact" },
 ];
 
@@ -40,23 +40,23 @@ export const gridItems = [
     id: 4,
     title: "Tech enthusiast with a passion for development.",
     description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    className: "lg:col-span-3 md:col-span-3 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-start",
     img: "/grid.svg",
     spareImg: "/b4.svg",
   },
 
-  {
-    id: 5,
-    title: "Currently building a JS Animation library",
-    description: "The Inside Scoop",
-    className: "md:col-span-3 md:row-span-2",
-    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
-    titleClassName: "justify-center md:justify-start lg:justify-center",
-    img: "/b5.svg",
-    spareImg: "/grid.svg",
-  },
+  // {
+  //   id: 5,
+  //   title: "Currently building a JS Animation library",
+  //   description: "The Inside Scoop",
+  //   className: "md:col-span-3 md:row-span-2",
+  //   imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
+  //   titleClassName: "justify-center md:justify-start lg:justify-center",
+  //   img: "/b5.svg",
+  //   spareImg: "/grid.svg",
+  // },
   {
     id: 6,
     title: "Do you want to start a project together?",
@@ -72,36 +72,37 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    title: "Excel SpreadSheet",
+    des: "An Excel spreadsheet front-end project aims to create a user-friendly interface to input and manipulate data. Involves cell based interaction, formula cycle detection, tracing cycle",
+    img: "/Excell.svg",
+    iconLists: ["/html.svg", "/js.svg", "/css.svg"],
+    GitHubLink: "https://github.com/shruti0503/Excel",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
+    title: "Croom - Video Conferencing App",
     des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
     img: "/p2.svg",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "/ui.yoom.com",
+    GitHubLink:"https://github.com/shruti0503/Croom",
+    link: "https://zcroom-shrutis-projects-351038ed.vercel.app/sign-in?redirect_url=https%3A%2F%2Fzcroom-shrutis-projects-351038ed.vercel.app%2F",
   },
   {
     id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "/ui.aiimg.com",
+    title: "Calendlio-Appointment Booking Application",
+    des: "Enter Calendlio, a powerful appointment booking application that combines the flexibility of React and the robustness of Node.js 🚀 to provide seamless scheduling, Google Calendar integration , and email notifications.",
+    img: "/Calend.png",
+    iconLists: ["/react-2.svg", "/css.svg", "/nodejs-2.svg","/google.svg"],
+    GitHubLink: "/https://github.com/shruti0503/Calendlio",
   },
-  {
-    id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "/ui.apple.com",
-  },
+  // {
+  //   id: 4,
+  //   title: "Animated Apple Iphone 3D Website",
+  //   des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+  //   img: "/p4.svg",
+  //   iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+  //   link: "/ui.apple.com",
+  // },
 ];
 
 export const testimonials = [
@@ -173,31 +174,19 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    title: "Full Stack Developer Intern",
+    Company:"Kognics",
+    desc: "Assisted in the development of a web-based platform using React.js, Node.js, SQL, antDesign, Bootsrap, SCSS enhancing interactivity.Successfully addressed, resolved UI bugs and developed new features in the Kognics LSM product, significantly improving overall user satisfaction and attracting new clients to the platform.API implementation and integration, tackled backend tasks, and introduced new functionalities to the product. Spearheaded the development of the chat UI for Kognics CSM product, enhancing user interaction and contributing to a seamless customer support experience.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+    title: "Technical Content Writer",
+    Company:"Coding Ninjas",
+    desc: " I was fortunate to engage in a transformative journey that saw me authoring a remarkable collection of over 40+ articles, each meticulously tailored to explore a diverse spectrum of vital computer science subjects, covering an impressive array of topics, including but not limited to data structures and algorithms, web development intricacies, the intricate realm of object-oriented programming, and the foundational pillars of computer science. ",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
-  },
-  {
-    id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
-  },
-  {
-    id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
-    className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
   },
 ];
 
@@ -205,13 +194,15 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link:"https://github.com/shruti0503"
   },
   {
     id: 2,
     img: "/twit.svg",
   },
-  {
-    id: 3,
-    img: "/link.svg",
-  },
+  // {
+  //   id: 3,
+  //   img: "/link.svg",
+  //   link: "https://www.linkedin.com/in/shruti-vishwakarma-64baa5226/"
+  // },
 ];
