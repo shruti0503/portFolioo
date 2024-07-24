@@ -176,7 +176,7 @@ export const workExperience = [
     id: 1,
     title: "Full Stack Developer Intern",
     Company:"Kognics",
-    desc: "Assisted in the development of a web-based platform using React.js, Node.js, SQL, antDesign, Bootsrap, SCSS enhancing interactivity.Successfully addressed, resolved UI bugs and developed new features in the Kognics LMS product, significantly improving overall user satisfaction and attracting new clients to the platform.API implementation and integration, tackled backend tasks, and introduced new functionalities to the product. Spearheaded the development of the chat UI for Kognics CSM product, enhancing user interaction and contributing to a seamless customer support experience.",
+    desc: "Assisted in the development of a web-based platform using React.js, Node.js, SQL, antDesign, Bootsrap, SCSS enhancing interactivity.Successfully addressed, resolved UI bugs and developed new features in the Kognics LMS product, significantly improving overall user satisfaction and attracting new clients to the platform.API implementation and integration, tackled backend tasks, and introduced new functionalities to the product. Spearheaded the development of the  UI for the product, enhancing user interaction and contributing to a seamless customer support experience.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
