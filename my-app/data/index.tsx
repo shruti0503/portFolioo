@@ -73,7 +73,7 @@ export const projects = [
   {
     id: 1,
     title: "HealthSync - Doc at a step",
-    des: "Welcome to HealthSync – your one-stop solution for healthcare booking and management. This application is designed to streamline the process of scheduling, managing, and tracking healthcare appointments, ensuring a seamless experience for both patients and doctors.",
+    des: "Welcome to HealthSync – your one-stop solution for healthcare managment and booking. This application is designed to streamline the process of scheduling, managing, and tracking healthcare appointments, ensuring a seamless experience for both patients and doctors.",
     img: "/healthsync.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/appwrite.png", "/twilio.png"],
     GitHubLink:"https://github.com/shruti0503/HealthSync",
@@ -210,12 +210,8 @@ export const socialMedia = [
     link:"https://github.com/shruti0503"
   },
   {
-    id: 2,
-    img: "/twit.svg",
+    id: 3,
+    img: "/link.svg",
+    link: "https://www.linkedin.com/in/shruti-vishwakarma-64baa5226/"
   },
-  // {
-  //   id: 3,
-  //   img: "/link.svg",
-  //   link: "https://www.linkedin.com/in/shruti-vishwakarma-64baa5226/"
-  // },
 ];
