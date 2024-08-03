@@ -72,11 +72,12 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "Excel SpreadSheet",
-    des: "An Excel spreadsheet front-end project aims to create a user-friendly interface to input and manipulate data. Involves cell based interaction, formula cycle detection, tracing cycle",
-    img: "/Excell.svg",
-    iconLists: ["/html.svg", "/js.svg", "/css.svg"],
-    GitHubLink: "https://github.com/shruti0503/Excel",
+    title: "HealthSync - Doc at a step",
+    des: "Welcome to HealthSync – your one-stop solution for healthcare booking and management. This application is designed to streamline the process of scheduling, managing, and tracking healthcare appointments, ensuring a seamless experience for both patients and doctors.",
+    img: "/healthsync.png",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/appwrite.png", "/twilio.png"],
+    GitHubLink:"https://github.com/shruti0503/HealthSync",
+    link: "https://health-sync-kappa.vercel.app/",
   },
   {
     id: 2,
@@ -87,8 +88,18 @@ export const projects = [
     GitHubLink:"https://github.com/shruti0503/Croom",
     link: "https://zcroom-shrutis-projects-351038ed.vercel.app/sign-in?redirect_url=https%3A%2F%2Fzcroom-shrutis-projects-351038ed.vercel.app%2F",
   },
+
   {
     id: 3,
+    title: "Excel SpreadSheet",
+    des: "An Excel spreadsheet front-end project aims to create a user-friendly interface to input and manipulate data. Involves cell based interaction, formula cycle detection, tracing cycle",
+    img: "/Excell.svg",
+    iconLists: ["/html.svg", "/js.svg", "/css.svg"],
+    GitHubLink: "https://github.com/shruti0503/Excel",
+  },
+
+  {
+    id: 4,
     title: "Calendlio-Appointment Booking Application",
     des: "Enter Calendlio, a powerful appointment booking application that combines the flexibility of React and the robustness of Node.js 🚀 to provide seamless scheduling, Google Calendar integration , and email notifications.",
     img: "/Calend.png",
