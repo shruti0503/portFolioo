@@ -187,6 +187,7 @@ export const workExperience = [
     id: 1,
     title: "Full Stack Developer Intern",
     Company:"Kognics",
+    TimeLine:"11/2023 - 06/2024",
     desc: "Assisted in the development of a web-based platform using React.js, Node.js, SQL, antDesign, Bootsrap, SCSS enhancing interactivity.Successfully addressed, resolved UI bugs and developed new features in the Kognics LMS product, significantly improving overall user satisfaction and attracting new clients to the platform.API implementation and integration, tackled backend tasks, and introduced new functionalities to the product. Spearheaded the development of the  UI for the product, enhancing user interaction and contributing to a seamless customer support experience.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
@@ -195,6 +196,7 @@ export const workExperience = [
     id: 2,
     title: "Technical Content Writer",
     Company:"Coding Ninjas",
+    TimeLine:"02/2023-07/2023",
     desc: " I was fortunate to engage in a transformative journey that saw me authoring a remarkable collection of over 40+ articles, each meticulously tailored to explore a diverse spectrum of vital computer science subjects, covering an impressive array of topics, including but not limited to data structures and algorithms, web development intricacies, the intricate realm of object-oriented programming, and the foundational pillars of computer science. ",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
