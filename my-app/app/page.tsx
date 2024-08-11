@@ -13,29 +13,37 @@ import Footer from "./components/Footer";
 import PassKeyModel from "./components/PassKey";
 
 import { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { getWorkExperience } from "@/app/lib/actions/admin.actions";
 
-export default function Home() {
+declare type SearchParamProps = {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function Home({searchParams}:SearchParamProps) {
   const router = useRouter();
   const [isAdmin, setIsAdmin] = useState(false);
-  const pathname = usePathname();
-  const searchParams = useSearchParams();  // Updated hook to fetch query params
+  const pathname=usePathname();
+   
+  //const isAdmin=searchParams?.admin==="true";
 
   useEffect(() => {
-    const admin = searchParams.get('admin') === "true";  // Extract the query parameter
-    console.log("typeof admin", typeof admin);
-    console.log("admin", admin);
-    console.log("searchParams.get('admin')", searchParams.get('admin'));
+    const admin = searchParams?.admin=="true";
+    console.log("typeof admin",typeof admin)
+    console.log("admin",admin)
+    console.log("searchParams?.admin",searchParams?.admin)
     setIsAdmin(admin);
-  }, [pathname, searchParams]);
+  }, [isAdmin, pathname,searchParams]);
+
+
 
   return (
     <main className="relative bg-black justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <div className="max-w-[100vw] w-full">
         <FloatingNav navItems={navItems} />
-        {isAdmin && <PassKeyModel isAdmin={isAdmin} />}
+        {isAdmin && <PassKeyModel  isAdmin={isAdmin}/>}
         <Hero />
       </div>
       <Grid />
