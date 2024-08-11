@@ -25,7 +25,7 @@ export default function Home({ searchParams }: SearchParamProps) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') { // Ensures this runs only on the client
-      const admin = searchParams?.admin === "true";
+      const admin = searchParams?.admin == "true";
       setIsAdmin(admin);
       console.log(" loogeing in window")
     }
