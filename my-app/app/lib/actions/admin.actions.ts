@@ -61,7 +61,7 @@ export const getProjects = async () => {
   await connection();
   try {
     const projects = await Projects.find().sort({ createdAt: -1 });
-    return projects;
+    return parseStringify(projects);
   } catch (error) {
     console.error('Error getting projects:', error);
     throw error;
@@ -73,7 +73,7 @@ export const getWorkExperience = async () => {
   await connection();
   try {
     const workExperiences = await WorkExperience.find().sort({ createdAt: -1 });
-    return workExperiences;
+    return parseStringify(workExperiences);
   } catch (error) {
     console.error('Error getting work experience:', error);
     throw error;
