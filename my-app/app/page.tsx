@@ -27,6 +27,7 @@ export default function Home({ searchParams }: SearchParamProps) {
     if (typeof window !== 'undefined') { // Ensures this runs only on the client
       const admin = searchParams?.admin == "true";
       setIsAdmin(admin);
+      console.log("searchParams?.admin",searchParams?.admin)
       console.log(" loogeing in window")
     }
     else{
