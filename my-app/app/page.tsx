@@ -16,24 +16,26 @@ import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { getWorkExperience } from "@/app/lib/actions/admin.actions";
+import { useSearchParams } from 'next/navigation'
 
 declare type SearchParamProps = {
   params: { [key: string]: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default function Home({searchParams}:SearchParamProps) {
+export default function Home() {
   const router = useRouter();
   const [isAdmin, setIsAdmin] = useState(false);
   const pathname=usePathname();
+  const searchParams = useSearchParams();
    
   //const isAdmin=searchParams?.admin==="true";
 
   useEffect(() => {
-    const admin = searchParams?.admin=="true";
+    const admin = searchParams.get('admin') == "true";
     console.log("typeof admin",typeof admin)
     console.log("admin",admin)
-    console.log("searchParams?.admin",searchParams?.admin)
+    console.log("searchParams?.admin",searchParams.get('admin'))
     setIsAdmin(admin);
   }, [isAdmin, pathname,searchParams]);
 
