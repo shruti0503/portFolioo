@@ -58,12 +58,12 @@ export function ProjectForm() {
   useEffect(() => {
     const fetchUploadKey = async () => {
       try {
-        const response = await fetch('/api/get-upload-key');
-        const data = await response.json();
-        if (response.ok) {
-          setUploadKey(data.key);
+        const data = await getUploadKey();
+       
+        if (data) {
+          setUploadKey(data);
         } else {
-          console.error('Failed to fetch upload key:', data.error);
+          console.error('Failed to fetch upload key:');
         }
       } catch (error) {
         console.error('Error fetching upload key:', error);
