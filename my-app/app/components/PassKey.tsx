@@ -96,7 +96,7 @@ const PassKeyModel = () => {
            </AlertDialogDescription>
            </AlertDialogHeader>
 
-           <div>
+           <div className='flex justify-center'>
             <InputOTP
               maxLength={7}
               value={passkey}
