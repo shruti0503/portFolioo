@@ -5,6 +5,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { decryptKey } from '../lib/utils'
 import { encryptKey } from '../lib/utils'
 import Image from 'next/image'
+import { getPassKey } from '../lib/actions/admin.actions'
+// import { ADMIN_PASSKEY } from '../lib/actions/admin.actions'
 import { Terminal } from 'lucide-react'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
 import { useEffect, useState } from 'react'
@@ -42,11 +44,13 @@ const PassKeyModel = () => {
   null;
 
   useEffect(()=>{
+    
 
     const accessKey=encryptedKey && decryptKey(encryptedKey);
+    const ADMIN_PASSKEY=getPassKey();
 
     if(path){
-      if(accessKey===process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()){
+      if(accessKey===ADMIN_PASSKEY!.toString()){
         setOpen(false);
         router.push("/admin")
 
@@ -64,7 +68,8 @@ const PassKeyModel = () => {
 
   const validatePasskey=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault();
-    if(passkey===process.env.NEXT_PUBLIC_ADMIN_PASSKEY){
+    const ADMIN_PASSKEY=getPassKey();
+    if(passkey===ADMIN_PASSKEY){
       const encryptedKey = encryptKey(passkey);
       localStorage.setItem("accessKey", encryptedKey);
     }

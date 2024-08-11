@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
 import { z } from "zod"
+import { getPassKey, getUploadKey } from "@/app/lib/actions/admin.actions";
+// import { UPLOAD } from "@/app/lib/actions/admin.actions";
 import { Button } from "@/components/ui/button"
 import { postProject } from "@/app/lib/actions/admin.actions"
 import {
@@ -16,7 +18,7 @@ import {
 
 } from "@/components/ui/form"
 import { Input } from "./ui/input"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Textarea } from "./ui/textarea";
 
 // Extend schema to include all form fields
@@ -51,6 +53,14 @@ export function ProjectForm() {
       techStackImages: [], // Initially, no images
     },
   });
+
+  const [uploadKey,setUploadKey]=useState('');
+
+  useEffect(()=>{
+   const key= getUploadKey();
+   setUploadKey(key!);
+
+  },[])
 
   const [file, setFile]=useState('');
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -143,7 +153,7 @@ export function ProjectForm() {
               <FormLabel>Insert Image</FormLabel>
               <FormControl>
                 <FileUploaderRegular
-                  pubkey={`${process.env.NEXT_PUBLIC_UPLOAD}`}
+                  pubkey={`${uploadKey}`}
                   maxLocalFileSizeBytes={10000000}
                   multiple={false}
                   imgOnly={true}
@@ -181,7 +191,7 @@ export function ProjectForm() {
       <FormLabel>Insert Tech Stack Images</FormLabel>
       <FormControl>
         <FileUploaderRegular
-          pubkey={`${process.env.NEXT_PUBLIC_UPLOAD}`}
+          pubkey={`${uploadKey}`}
           maxLocalFileSizeBytes={10000000}
           multiple={true}
           imgOnly={true}

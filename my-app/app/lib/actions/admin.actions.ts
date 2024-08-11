@@ -79,3 +79,14 @@ export const getWorkExperience = async () => {
     throw error;
   }
 };
+
+export const getPassKey=()=>{
+  return process.env.ADMIN_PASSKEY
+}
+export const getUploadKey=()=>{
+
+  return process.env.UPLOAD;
+
+}
+// export const ADMIN_PASSKEY= process.env.ADMIN_PASSKEY
+// export const UPLOAD=

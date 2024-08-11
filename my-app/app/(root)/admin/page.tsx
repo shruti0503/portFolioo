@@ -7,6 +7,8 @@ import { ProjectForm } from '@/components/ProjectForm'
 import { useRouter } from 'next/navigation'
 import { Separator } from "@/components/ui/separator"
 import { useLayoutEffect } from 'react'
+import { getPassKey } from '@/app/lib/actions/admin.actions'
+// import { ADMIN_PASSKEY } from '@/app/lib/actions/admin.actions'
 import { decryptKey } from '@/app/lib/utils'
 import { WorkExperienceForm } from '@/components/WorkExperienceForm'
 import Link from 'next/link'
@@ -18,7 +20,9 @@ const Admin = () => {
 
     useLayoutEffect(()=>{
         const accessKey=encryptedKey && decryptKey(encryptedKey);
-        if(accessKey===process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()){     
+
+        const ADMIN_PASSKEY=getPassKey();
+        if(accessKey===ADMIN_PASSKEY!.toString()){     
             //router.push("/admin")
             console.log("accessKey",accessKey)
         }
