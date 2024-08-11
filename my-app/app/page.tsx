@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import Hero from "./components/Hero";
 import { FloatingNav } from "./components/NavBar";
@@ -9,23 +10,37 @@ import { navItems } from "@/data";
 import Experience from "./components/Experience";
 import Approach from "./components/Approach";
 import Footer from "./components/Footer";
-import { NavbarDemo } from "./components/NavbarNew";
+import PassKeyModel from "./components/PassKey";
 
-export default function Home() {
+import { useEffect, useState } from 'react';
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { getWorkExperience } from "@/lib/actions/admin.actions";
+
+export default function Home({searchParams}:any) {
+  const router = useRouter();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const pathname=usePathname();
+   
+  //const isAdmin=searchParams?.admin==="true";
+
+  useEffect(() => {
+    const admin = searchParams?.admin==="true";
+    setIsAdmin(admin);
+  }, [isAdmin, pathname,searchParams]);
+
   return (
-   <main className="relative bg-black  justify-center 
-    items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-    <div className="max-w-[100vw] w-full ">
-      {/* <NavbarDemo /> */}
-      <FloatingNav  navItems={navItems} />
-      <Hero />
-    </div>
-    <Grid />
-    <RecentProjects />
-    {/* <Clients /> */}
-    <Experience />
-    <Approach />
-    <Footer />
-   </main>
+    <main className="relative bg-black justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
+      <div className="max-w-[100vw] w-full">
+        <FloatingNav navItems={navItems} />
+        {isAdmin && <PassKeyModel />}
+        <Hero />
+      </div>
+      <Grid />
+      <RecentProjects />
+      <Experience />
+      <Approach />
+      <Footer />
+    </main>
   );
 }

@@ -1,11 +1,36 @@
 'use client'
 
+import React, { useEffect, useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
-
-import { projects } from "@/data";
+import { getProjects } from "@/lib/actions/admin.actions";
 import { PinContainer } from "./ui/PinContainer";
 
+interface Project {
+  id: string;
+  projectName: string;
+  description: string;
+  image: string;
+  techStackImages: string[];
+  gitHubLink?: string;
+  projectLink?: string;
+}
+
 const RecentProjects = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  const fetchProjects = async () => {
+    try {
+      const projectData = await getProjects();
+      setProjects(projectData);
+    } catch (err) {
+      console.error("Failed to fetch projects:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   return (
     <div className="py-20">
       <h1 className="heading">
@@ -20,7 +45,7 @@ const RecentProjects = () => {
           >
             <PinContainer
               title="Project"
-              href={item?.link}
+              href={item?.projectLink}
             >
               <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                 <div
@@ -31,14 +56,14 @@ const RecentProjects = () => {
                 </div>
                   
                 <img
-                  src={item.img}
+                  src={item.image}
                   alt="cover"
                   className="z-10 absolute bottom-2 h-full lg:rounded-3xl"
                 />
               </div>
 
               <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 ">
-                {item.title}
+                {item.projectName}
               </h1>
 
               <p
@@ -48,12 +73,12 @@ const RecentProjects = () => {
                   margin: "1vh 0",
                 }}
               >
-                {item.des}
+                {item.description}
               </p>
 
               <div className="flex items-center justify-between mt-7 mb-3">
                 <div className="flex items-center">
-                  {item.iconLists.map((icon, index) => (
+                  {item.techStackImages.map((icon, index) => (
                     <div
                       key={index}
                       className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
@@ -67,23 +92,17 @@ const RecentProjects = () => {
                 </div>
 
                 <div className="flex justify-center items-center gap-2">
-                  {
-                    item.GitHubLink && 
-                    <a className="flex lg:text-xl md:text-xs text-sm text-purple" href={item.GitHubLink}>
+                  {item.gitHubLink && (
+                    <a className="flex lg:text-xl md:text-xs text-sm text-purple" href={item?.gitHubLink}>
                       GitHub
                     </a>
-                  }
-                   {
-                    item.link && 
-                    
-                    <a className="flex lg:text-xl md:text-xs text-sm text-purple" href={item.link}>
-                       Live
+                  )}
+                  {item?.projectLink && (
+                    <a className="flex lg:text-xl md:text-xs text-sm text-purple" href={item?.projectLink}>
+                      Live
                     </a>
-                  }
-                   
+                  )}
                   <FaLocationArrow className="ms-1" color="#CBACF9" />
-                  
-                  
                 </div>
               </div>
             </PinContainer>
@@ -93,10 +112,10 @@ const RecentProjects = () => {
 
       <div className="w-full justify-end flex text-purple pe-5 underline ">
         <div>
-           <a className="text-purple cursor-pointer" href="https://github.com/shruti0503">More</a>
-
+          <a className="text-purple cursor-pointer" href="https://github.com/shruti0503">
+            More
+          </a>
         </div>
-        
       </div>
     </div>
   );
