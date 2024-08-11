@@ -12,7 +12,7 @@ export const connection = async () => {
     console.log("MongoDB already connected");
     return Promise.resolve();
   }
-  return mongoose.connect(url!)
+  return mongoose.connect(url?.toString()!)
     .then(() => {
       isConnected = true;
       console.log('MongoDB Connected');
