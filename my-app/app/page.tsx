@@ -26,8 +26,11 @@ export default function Home({searchParams}:any) {
 
   useEffect(() => {
     const admin = searchParams?.admin==="true";
+    console.log("admin",admin)
     setIsAdmin(admin);
   }, [isAdmin, pathname,searchParams]);
+
+
 
   return (
     <main className="relative bg-black justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
