@@ -13,7 +13,12 @@ import Footer from "./components/Footer";
 import PassKeyModel from "./components/PassKey";
 import { navItems } from "@/data";
 
-export default function Home({ searchParams }: any) {
+declare type SearchParamProps = {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function Home({ searchParams }: SearchParamProps) {
   const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -22,6 +27,7 @@ export default function Home({ searchParams }: any) {
     if (typeof window !== 'undefined') { // Ensures this runs only on the client
       const admin = searchParams?.admin === "true";
       setIsAdmin(admin);
+      console.log(" loogeing in window")
     }
     else{
       console.log("nopt loogeing in window")
