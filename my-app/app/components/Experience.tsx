@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { workExperience } from "@/data";
 import { Button } from "./ui/MovingBorders";
+import Loader from "@/components/ui/Loader";
 import { getWorkExperience } from "@/app/lib/actions/admin.actions";
 
 
@@ -15,12 +16,15 @@ interface WorkExperience {
 const Experience = () => {
  
   const [workExp, setWorkExp] = useState<WorkExperience[]>([]);
+  const [loading, setLoading]=useState(false);
 
   const getWork = async () => {
     try{
+      setLoading(true);
       const work = await getWorkExperience();
       console.log("workep", work);
       setWorkExp(work); 
+      setLoading(false);
 
     }
     catch(err){
@@ -35,7 +39,12 @@ const Experience = () => {
   }, []);
 
   return (
-    <div className="py-20 w-full">
+    <>
+     {
+      loading ? 
+      <Loader />
+      :
+      <div className="py-20 w-full">
       <h1 className="heading">
         My <span className="text-purple">work experience</span>
       </h1>
@@ -74,7 +83,12 @@ const Experience = () => {
           </Button>
         ))}
       </div>
-    </div>
+      </div>
+
+    }
+    </>
+
+   
   );
 };
 

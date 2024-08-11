@@ -82,6 +82,9 @@
   .heading {
     @apply font-bold text-4xl md:text-5xl text-center;
   }
+  .loader {
+    @apply flex  items-center justify-center gap-3 text-white;
+  }
 
   .black-gradient {
     background: linear-gradient(90deg, #161a31 0%, #06091f 100%);

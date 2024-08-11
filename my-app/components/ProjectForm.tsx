@@ -49,18 +49,29 @@ export function ProjectForm() {
       description: "",
       projectLink: "",
       gitHubLink: "",
-      image: null, // Initially, no image URL
-      techStackImages: [], // Initially, no images
+      image: null, 
+      techStackImages: [], 
     },
   });
 
   const [uploadKey,setUploadKey]=useState('');
+  useEffect(() => {
+    const fetchUploadKey = async () => {
+      try {
+        const response = await fetch('/api/get-upload-key');
+        const data = await response.json();
+        if (response.ok) {
+          setUploadKey(data.key);
+        } else {
+          console.error('Failed to fetch upload key:', data.error);
+        }
+      } catch (error) {
+        console.error('Error fetching upload key:', error);
+      }
+    };
 
-  useEffect(()=>{
-   const key= getUploadKey();
-   setUploadKey(key!);
-
-  },[])
+    fetchUploadKey();
+  }, []);
 
   const [file, setFile]=useState('');
   async function onSubmit(values: z.infer<typeof formSchema>) {

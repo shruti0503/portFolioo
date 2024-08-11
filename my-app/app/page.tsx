@@ -33,7 +33,7 @@ export default function Home({searchParams}:any) {
     <main className="relative bg-black justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <div className="max-w-[100vw] w-full">
         <FloatingNav navItems={navItems} />
-        {isAdmin && <PassKeyModel />}
+        {isAdmin && <PassKeyModel  isAdmin={isAdmin}/>}
         <Hero />
       </div>
       <Grid />

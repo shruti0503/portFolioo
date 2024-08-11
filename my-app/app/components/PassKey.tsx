@@ -4,6 +4,7 @@ import React from 'react'
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { decryptKey } from '../lib/utils'
 import { encryptKey } from '../lib/utils'
+import Loader from '@/components/ui/Loader'
 import Image from 'next/image'
 import { getPassKey } from '../lib/actions/admin.actions'
 // import { ADMIN_PASSKEY } from '../lib/actions/admin.actions'
@@ -23,12 +24,13 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
 
-const PassKeyModel = () => {
+const PassKeyModel = ({isAdmin}:any) => {
 
     console.log("inside passkey")
 
   const router=useRouter();
   const path=usePathname();
+  const [loading, setLoading]=useState(false);
   const [open, setOpen]=useState(true);
   const [passkey, setPasskey]=useState("");
   const [error, setError]=useState("");
@@ -39,13 +41,25 @@ const PassKeyModel = () => {
     router.push("/")
   }
 
+  useEffect(()=>{
+    if(isAdmin){
+      
+      setOpen(true)
+
+    }
+    else{
+      setOpen(false)
+    }
+    
+
+  },[isAdmin])
+
   const encryptedKey= typeof window !=="undefined" ? 
   window.localStorage.getItem("accessKey"):
   null;
 
   useEffect(()=>{
-    
-
+  
     const accessKey=encryptedKey && decryptKey(encryptedKey);
     const ADMIN_PASSKEY=getPassKey();
 
@@ -53,6 +67,7 @@ const PassKeyModel = () => {
       if(accessKey===ADMIN_PASSKEY!.toString()){
         setOpen(false);
         router.push("/admin")
+        
 
       }
       else{
@@ -62,14 +77,17 @@ const PassKeyModel = () => {
 
     }
 
+
   },[encryptKey])
 
   
 
-  const validatePasskey=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+  const validatePasskey=async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault();
-    const ADMIN_PASSKEY=getPassKey();
-    if(passkey===ADMIN_PASSKEY){
+    setLoading(true);
+    const ADMIN_PASSKEY=await getPassKey();
+    console.log("ADMIN_PASSKEY",ADMIN_PASSKEY)
+    if(passkey==ADMIN_PASSKEY?.toString()){
       const encryptedKey = encryptKey(passkey);
       localStorage.setItem("accessKey", encryptedKey);
     }
@@ -78,12 +96,17 @@ const PassKeyModel = () => {
     }
     setOpen(false);
     router.push("/admin")
+    setLoading(false);
   }
 
   return (
+   
      <AlertDialog open={open} onOpenChange={setOpen} >
-       <AlertDialogContent className='shad-alert-dialog'>
-        <AlertDialogHeader>
+        <AlertDialogContent className='shad-alert-dialog'>
+          {
+            loading ?  <Loader />:
+            <>
+            <AlertDialogHeader>
            <AlertDialogTitle className='flex items-start justify-between'>
               Admin Access Vertification
               <Image 
@@ -136,9 +159,16 @@ const PassKeyModel = () => {
                 Enter Admin Passkey
               </AlertDialogAction>
             </AlertDialogFooter>
+            </>
+          }
+        
 
        
        </AlertDialogContent>
+
+
+
+      
 
      </AlertDialog>
   )

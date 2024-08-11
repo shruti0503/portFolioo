@@ -1,5 +1,5 @@
 'use client'
-
+import Loader from "@/components/ui/Loader";
 import React, { useEffect, useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import { getProjects } from "@/app/lib/actions/admin.actions";
@@ -17,11 +17,14 @@ interface Project {
 
 const RecentProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading]=useState(false);
 
   const fetchProjects = async () => {
     try {
+      setLoading(true);
       const projectData = await getProjects();
       setProjects(projectData);
+      setLoading(false);
     } catch (err) {
       console.error("Failed to fetch projects:", err);
     }
@@ -32,7 +35,12 @@ const RecentProjects = () => {
   }, []);
 
   return (
-    <div className="py-20">
+    <>
+    {
+      loading ?
+      <Loader />
+      :
+      <div className="py-20">
       <h1 className="heading">
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
@@ -118,6 +126,10 @@ const RecentProjects = () => {
         </div>
       </div>
     </div>
+
+    }
+    </>
+  
   );
 };
 
