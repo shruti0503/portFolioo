@@ -23,6 +23,9 @@ export default function Home({ searchParams }: any) {
       const admin = searchParams?.admin === "true";
       setIsAdmin(admin);
     }
+    else{
+      console.log("nopt loogeing in window")
+    }
   }, [searchParams, pathname]);
 
   return (
