@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { workExperience } from "@/data";
 import { Button } from "./ui/MovingBorders";
-import { getWorkExperience } from "@/lib/actions/admin.actions";
+import { getWorkExperience } from "@/app/lib/actions/admin.actions";
 
 
 interface WorkExperience {

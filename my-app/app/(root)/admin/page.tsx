@@ -2,12 +2,12 @@
 
 import React, { useEffect } from 'react'
 import Header from '@/app/components/admin/Header'
-import { encryptKey } from '@/lib/utils'
+import { encryptKey } from '@/app/lib/utils'
 import { ProjectForm } from '@/components/ProjectForm'
 import { useRouter } from 'next/navigation'
 import { Separator } from "@/components/ui/separator"
 import { useLayoutEffect } from 'react'
-import { decryptKey } from '@/lib/utils'
+import { decryptKey } from '@/app/lib/utils'
 import { WorkExperienceForm } from '@/components/WorkExperienceForm'
 import Link from 'next/link'
 const Admin = () => {

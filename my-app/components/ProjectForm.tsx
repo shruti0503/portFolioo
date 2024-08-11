@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
-import { postProject } from "@/lib/actions/admin.actions"
+import { postProject } from "@/app/lib/actions/admin.actions"
 import {
   Form,
   FormControl,

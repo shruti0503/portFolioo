@@ -6,7 +6,7 @@ import { z } from "zod"
 import { FileUploader } from "./ui/file-upload"
 import { Textarea } from "./ui/textarea"
 import { Button } from "@/components/ui/button"
-import { postWorkExperience } from "@/lib/actions/admin.actions"
+import { postWorkExperience } from "@/app/lib/actions/admin.actions"
 import { DatePickerWithRange } from "./ui/RangeDatePicker"
 
 import {

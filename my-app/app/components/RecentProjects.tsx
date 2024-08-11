@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
-import { getProjects } from "@/lib/actions/admin.actions";
+import { getProjects } from "@/app/lib/actions/admin.actions";
 import { PinContainer } from "./ui/PinContainer";
 
 interface Project {

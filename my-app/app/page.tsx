@@ -15,7 +15,7 @@ import PassKeyModel from "./components/PassKey";
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
-import { getWorkExperience } from "@/lib/actions/admin.actions";
+import { getWorkExperience } from "@/app/lib/actions/admin.actions";
 
 export default function Home({searchParams}:any) {
   const router = useRouter();

@@ -2,8 +2,8 @@
 import React from 'react'
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { decryptKey } from '@/lib/utils'
-import { encryptKey } from '@/lib/utils'
+import { decryptKey } from '../lib/utils'
+import { encryptKey } from '../lib/utils'
 import Image from 'next/image'
 import { Terminal } from 'lucide-react'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
@@ -112,6 +112,8 @@ const PassKeyModel = () => {
                     <InputOTPSlot className="shad-otp-slot" index={6} />
                   </InputOTPGroup>
                 </InputOTP>
+
+
 
                 {
                   error && (
