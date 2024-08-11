@@ -12,34 +12,44 @@ import Approach from "./components/Approach";
 import Footer from "./components/Footer";
 import PassKeyModel from "./components/PassKey";
 import { navItems } from "@/data";
+import Search from './components/Search';
 
 declare type SearchParamProps = {
   params: { [key: string]: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
+import { Suspense } from 'react'
 
-export default function Home({ searchParams }: SearchParamProps) {
+export default function Home() {
   const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname=usePathname();
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') { // Ensures this runs only on the client
-      const admin = searchParams?.admin == "true";
-      setIsAdmin(admin);
-      console.log("searchParams?.admin",searchParams?.admin)
-      console.log(" loogeing in window")
-    }
-    else{
-      console.log("nopt loogeing in window")
-    }
-  }, [searchParams, pathname]);
+  //const searchParams = useSearchParams();
+ 
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') { // Ensures this runs only on the client
+  //     const admin = pathname.includes('/?admin=true')  == true;
+  //     setIsAdmin(admin);
+  //     console.log("pathname", pathname)
+  //     console.log("searchParams?.admin",pathname.includes('/?admin=true') )
+  //     console.log(" loogeing in window", admin)
+  //   }
+  //   else{
+  //     console.log("nopt loogeing in window")
+  //   }
+  // }, [ pathname]);
 
   return (
+  
     <main className="relative bg-black justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <div className="max-w-[100vw] w-full">
         <FloatingNav navItems={navItems} />
-        {isAdmin && <PassKeyModel isAdmin={isAdmin} />}
+        <Suspense fallback={<div>Loading..</div>}>
+           <Search setIsAdmin={setIsAdmin} isAdmin={isAdmin} />
+        </Suspense>
+        
+        {isAdmin && <PassKeyModel isAdmin={isAdmin}  />}
         <Hero />
       </div>
       <Grid />
@@ -48,5 +58,6 @@ export default function Home({ searchParams }: SearchParamProps) {
       <Approach />
       <Footer />
     </main>
+    
   );
 }
