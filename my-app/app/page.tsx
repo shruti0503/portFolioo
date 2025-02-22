@@ -10,6 +10,7 @@ import RecentProjects from "./components/RecentProjects";
 import Experience from "./components/Experience";
 import Approach from "./components/Approach";
 import Footer from "./components/Footer";
+import { socialMedia } from '@/data';
 import PassKeyModel from "./components/PassKey";
 import { navItems } from "@/data";
 import Search from './components/Search';
@@ -53,8 +54,10 @@ export default function Home() {
         <Hero />
       </div>
       <Grid />
-      <RecentProjects />
       <Experience />
+      <div className='flex w-full justify-center items-center font-bold text-lg gap-1'><a   href={socialMedia[0].link}  className='cursor-pointer'>GitHub</a> <img src={socialMedia[0].img} width={20} height={20} /> </div>
+      <img src="https://ghchart.rshah.org/shruti0503" alt="GitHub Contribution Graph" className='flex w-full'  />
+      <RecentProjects />
       <Approach />
       <Footer />
     </main>

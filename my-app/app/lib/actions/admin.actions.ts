@@ -57,10 +57,14 @@ export const postWorkExperience = async ({ position, company, duration, descript
 };
 
 // GET Projects
-export const getProjects = async () => {
+export const getProjects = async (currentPage=1, PageSize=3) => {
   await connection();
   try {
-    const projects = await Projects.find().sort({ createdAt: -1 });
+    //const pageNumber=parseInt(currentPage, 3);
+
+    const projects = await Projects.find();
+    console.log("projects", projects)
+    projects.reverse();
     return parseStringify(projects);
   } catch (error) {
     console.error('Error getting projects:', error);

@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import { getProjects } from "@/app/lib/actions/admin.actions";
 import { PinContainer } from "./ui/PinContainer";
+import { ArrowDownWideNarrow } from "lucide-react";
+
 
 interface Project {
   id: string;
@@ -18,11 +20,19 @@ interface Project {
 const RecentProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading]=useState(false);
+  const [totalProjects, setTotalProjects]=useState(0);
+  const [currentPage, setCurrentPage]=useState(0);
+  const [totalPages, setTotalPages]=useState(1);
+
+  const PageSize=3;
+
 
   const fetchProjects = async () => {
     try {
       setLoading(true);
-      const projectData = await getProjects();
+      const projectData = await getProjects(currentPage, PageSize );
+      projects.reverse();
+      console.log("projects after rewverisng", projects)
       setProjects(projectData);
       setLoading(false);
     } catch (err) {
@@ -117,6 +127,7 @@ const RecentProjects = () => {
           </div>
         ))}
       </div>
+      {/* <ArrowDownWideNarrow /> */}
 
       <div className="w-full justify-end flex text-purple pe-5 underline ">
         <div>
