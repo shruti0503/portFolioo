@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
 import { z } from "zod"
-import { getPassKey, getUploadKey } from "@/app/lib/actions/admin.actions";
+import { getUploadKey } from "@/app/lib/actions/admin.actions";
 // import { UPLOAD } from "@/app/lib/actions/admin.actions";
 import { Button } from "@/components/ui/button"
 import { postProject } from "@/app/lib/actions/admin.actions"

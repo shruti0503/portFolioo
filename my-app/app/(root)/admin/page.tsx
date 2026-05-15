@@ -3,7 +3,7 @@
 import React, { useLayoutEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { decryptKey } from '@/app/lib/utils'
-import { getPassKey } from '@/app/lib/actions/admin.actions'
+import { validatePassKey } from '@/app/lib/actions/admin.actions'
 import { ProjectForm } from '@/components/ProjectForm'
 import { Separator } from "@/components/ui/separator"
 import { WorkExperienceForm } from '@/components/WorkExperienceForm'
@@ -15,13 +15,17 @@ const Admin = () => {
 
   useLayoutEffect(() => {
     const checkAccessKey = async () => {
-      const decryptedKey = encryptedKey && decryptKey(encryptedKey);
-      const adminPassKey = await getPassKey();
-
-      if (decryptedKey === adminPassKey) {
-        console.log("accessKey");
+      const decryptedKey = encryptedKey ? decryptKey(encryptedKey) : null;
+      if (decryptedKey) {
+        const isValid = await validatePassKey(decryptedKey);
+        if (isValid) {
+          console.log("accessKey valid");
+        } else {
+          console.log("accessKey invalid");
+          router.push("/");
+        }
       } else {
-        console.log("accessKey not logged",);
+        console.log("no accessKey");
         router.push("/");
       }
     };

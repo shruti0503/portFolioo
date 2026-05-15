@@ -6,7 +6,7 @@ import { decryptKey } from '../lib/utils'
 import { encryptKey } from '../lib/utils'
 import Loader from '@/components/ui/Loader'
 import Image from 'next/image'
-import { getPassKey } from '../lib/actions/admin.actions'
+import { validatePassKey } from '../lib/actions/admin.actions'
 // import { ADMIN_PASSKEY } from '../lib/actions/admin.actions'
 import { Terminal } from 'lucide-react'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
@@ -59,43 +59,41 @@ const PassKeyModel = ({ isAdmin }: any) => {
     null;
 
   useEffect(() => {
-
-    const accessKey = encryptedKey && decryptKey(encryptedKey);
-    const ADMIN_PASSKEY = getPassKey();
+    const checkKey = async () => {
+      const accessKey = encryptedKey ? decryptKey(encryptedKey) : null;
+      if (accessKey) {
+        const isValid = await validatePassKey(accessKey);
+        if (isValid) {
+          setOpen(false);
+          router.push("/admin");
+        } else {
+          setOpen(true);
+        }
+      } else {
+        setOpen(true);
+      }
+    };
 
     if (path) {
-      if (accessKey === ADMIN_PASSKEY!.toString()) {
-        setOpen(false);
-        router.push("/admin")
-
-
-      }
-      else {
-        setOpen(true);
-
-      }
-
+      checkKey();
     }
-
-
-  }, [encryptKey])
+  }, [encryptedKey, path, router])
 
 
 
   const validatePasskey = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setLoading(true);
-    const ADMIN_PASSKEY = await getPassKey();
-    // console.log("ADMIN_PASSKEY",ADMIN_PASSKEY)
-    if (passkey == ADMIN_PASSKEY?.toString()) {
-      const encryptedKey = encryptKey(passkey);
-      localStorage.setItem("accessKey", encryptedKey);
-    }
-    else {
+    const isValid = await validatePassKey(passkey);
+    
+    if (isValid) {
+      const encrypted = encryptKey(passkey);
+      localStorage.setItem("accessKey", encrypted);
+      setOpen(false);
+      router.push("/admin");
+    } else {
       setError("Invalid passKey.Please try again!");
     }
-    setOpen(false);
-    router.push("/admin")
     setLoading(false);
   }
 

@@ -84,8 +84,8 @@ export const getWorkExperience = async () => {
   }
 };
 
-export const getPassKey=()=>{
-  return process.env.ADMIN_PASSKEY
+export const validatePassKey = async (passkey: string) => {
+  return passkey === process.env.ADMIN_PASSKEY;
 }
 export const getUploadKey=()=>{
 
